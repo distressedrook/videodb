@@ -32,8 +32,9 @@ class ServiceManagerImp: ServiceManager {
         switch result {
         case .success(let value):
             return Result.success(value)
-        case .failure:
-            return Result.failure(VideoDBError(code: .noNetwork))
+        case .failure(let error):
+            let vdbError = VideoDBError(code: .system, underlyingError: error)
+            return Result.failure(vdbError)
         }
     }
 }

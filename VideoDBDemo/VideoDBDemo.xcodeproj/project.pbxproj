@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F675C7B2B70EF1B00CDC096 /* VideoDB in Frameworks */ = {isa = PBXBuildFile; productRef = 0F675C7A2B70EF1B00CDC096 /* VideoDB */; };
 		0F716A892B70E9D7003DE33B /* VideoDBDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F716A882B70E9D7003DE33B /* VideoDBDemoApp.swift */; };
 		0F716A8B2B70E9D7003DE33B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F716A8A2B70E9D7003DE33B /* ContentView.swift */; };
 		0F716A8D2B70E9D8003DE33B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F716A8C2B70E9D8003DE33B /* Assets.xcassets */; };
@@ -52,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F675C7B2B70EF1B00CDC096 /* VideoDB in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,6 +147,9 @@
 			dependencies = (
 			);
 			name = VideoDBDemo;
+			packageProductDependencies = (
+				0F675C7A2B70EF1B00CDC096 /* VideoDB */,
+			);
 			productName = VideoDBDemo;
 			productReference = 0F716A852B70E9D7003DE33B /* VideoDBDemo.app */;
 			productType = "com.apple.product-type.application";
@@ -217,6 +222,9 @@
 				Base,
 			);
 			mainGroup = 0F716A7C2B70E9D7003DE33B;
+			packageReferences = (
+				0F675C792B70EF1B00CDC096 /* XCLocalSwiftPackageReference ".." */,
+			);
 			productRefGroup = 0F716A862B70E9D7003DE33B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -613,6 +621,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		0F675C792B70EF1B00CDC096 /* XCLocalSwiftPackageReference ".." */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ..;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0F675C7A2B70EF1B00CDC096 /* VideoDB */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = VideoDB;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0F716A7D2B70E9D7003DE33B /* Project object */;
 }

@@ -9,4 +9,7 @@ import Foundation
 
 public enum VideoDBErrorCode: Int {
     case noNetwork
+    case generic
+    case system
+    case server
 }

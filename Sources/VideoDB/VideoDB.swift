@@ -1,26 +1,34 @@
 import Alamofire
 
-
-struct Connection {
+public struct Connection {
     let apiKey: String
     let videoRepository: VideoRepository
+    let uploadRepository: UploadRepository
+    let timelineRepository: TimelineRepository
 
-    init(apiKey: String) {
+    public init(apiKey: String) {
         self.apiKey = apiKey
-        self.videoRepository = VideoRepositoryImp(apiKey: apiKey, serviceManager: ServiceManagerImp(internetConnectionManager: InternetConnectionManagerImp()))
+        self.videoRepository = VideoRepositoryImp(apiKey: apiKey)
+        self.uploadRepository = UploadRepositoryImp(apiKey: apiKey)
+        self.timelineRepository = TimelineRepositoryImp(apiKey: apiKey)
     }
 
-    func getVideoInfo(with id: String) async -> Result<Video, VideoDBError> {
-        return await videoRepository.getVideoInfo(with: id)
+    public func getVideo(with id: String) async -> Result<Video, VideoDBError> {
+        return await videoRepository.getVideo(with: id)
     }
 
-//    func upload(url: String) async -> Video  {
-//        return Video()
-//    }
-//
-//    func getVideos() async -> [Video] {
-//        return []
-//    }
+    public func getVideos() async ->  Result<[Video], VideoDBError> {
+        return await videoRepository.getAllVideos()
+    }
+
+    public func uploadVideo(with url: String) async -> Result<Video, VideoDBError> {
+        return await uploadRepository.uploadVideo(with: url)
+    }
+
+    public func generateTimelineStream(with requestType: TimelineRequestType, timelines: [Timeline]) async -> Result<StreamLinks, VideoDBError> {
+        return await timelineRepository.createTimeline(of: requestType, timelines: timelines)
+    }
+
 //
 //    func getCollections() async -> [Collection] {
 //        return []
@@ -37,7 +45,13 @@ struct Collection {
 
     func indexSpokenWords() async {
         for video in videos {
-            await video.indexSpokenWords()
+            
         }
     }
 }
+
+public enum TimelineRequestType: String, Encodable {
+    case compile
+}
+
+public typealias StreamTimeline = (start: Int, end: Int)
